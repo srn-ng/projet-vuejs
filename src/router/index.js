@@ -1,12 +1,34 @@
+// import Vue from 'vue'
+// import Router from 'vue-router'
 
-import Vue from 'vue'
-import Router from 'vue-router'
+// Vue.use(Router)
 
-Vue.use(Router)
+// import HomeView from "@/views/HomeView.vue";
+// import AnimeView from "@/views/AnimeCreationView.vue";
 
+
+// const routes = [
+//   {
+//     path: "/",
+//     name: "Home",
+//     component: HomeView,
+//   },
+//   {
+//     path: "/new-anime",
+//     name: "Anime",
+//     component: AnimeView,
+//   },
+// ];
+
+// export default router;
+
+
+import Vue from 'vue';
+import Router from 'vue-router';
 import HomeView from "@/views/HomeView.vue";
-import AnimeView from "@/views/AnimeCreationView.vue";
+import AnimeCreationView from "@/views/AnimeCreationView.vue";
 
+Vue.use(Router);
 
 const routes = [
   {
@@ -16,8 +38,8 @@ const routes = [
   },
   {
     path: "/new-anime",
-    name: "Anime",
-    component: AnimeView,
+    name: "AnimeCreation",
+    component: AnimeCreationView,
   },
 ];
 

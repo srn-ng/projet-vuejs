@@ -54,6 +54,17 @@
 
 <script>
 export default {
+  props: {
+    anime: {
+      type: Object,
+      default: () => ({
+        title: "",
+        episodes: 0,
+        status: null,
+        imgUrl: "",
+      }),
+    },
+  },
   data() {
     return {
       form: {
@@ -70,6 +81,17 @@ export default {
       show: true,
     };
   },
+  watch: {
+    anime: {
+      immediate: true,
+      handler(newAnime) {
+        this.form.title = newAnime.title;
+        this.form.episodes = newAnime.episodes;
+        this.form.status = newAnime.status;
+        this.form.imgUrl = newAnime.imgUrl;
+      },
+    },
+  },
   methods: {
     onSubmit(event) {
       event.preventDefault();
@@ -79,10 +101,10 @@ export default {
     onReset(event) {
       event.preventDefault();
       // Reset our form values
-      this.form.title = "";
-      this.form.episodes = 0;
-      this.form.status = null;
-      this.form.imgUrl = "";
+      this.form.title = this.anime.title;
+      this.form.episodes = this.anime.episodes;
+      this.form.status = this.anime.status;
+      this.form.imgUrl = this.anime.imgUrl;
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
