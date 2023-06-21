@@ -11,11 +11,9 @@ const mutations = {
     state.animeList = animeList;
   },
   updateAnime(state, updatedAnime) {
-    // Recherchez l'anime correspondant dans la liste et mettez à jour ses propriétés
-    const index = state.animeList.findIndex(anime => anime.title === updatedAnime.title);
-    if (index !== -1) {
-      state.animeList[index] = { ...state.animeList[index], ...updatedAnime };
-    }
+    const anime_id = updatedAnime.anime_id
+    delete updatedAnime["anime_id"]
+    state.animeList.splice(anime_id, 1, updatedAnime);
   }
 };
 
@@ -23,7 +21,6 @@ const actions = {
   addAnime({ commit }, anime) {
     let myAnimeList = [...state.animeList, anime];
     commit('saveAnime', myAnimeList);
-    console.log(myAnimeList); // Vérifiez la liste animeList mise à jour dans la console
   },
   updateAnime({ commit }, updatedAnime) {
     commit('updateAnime', updatedAnime);

@@ -3,7 +3,7 @@
 <template>
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4" v-for="(anime, index) in animeList" :key="index">
-      <anime-card :anime="anime" @edit-anime="editAnime"></anime-card>
+      <anime-card :anime="anime" :anime_id="index" @edit-anime="editAnime"></anime-card>
     </div>
     <b-modal v-if="selectedAnime" v-model="editModalVisible" @ok="updateAnime">
       <anime-form :anime="selectedAnime"></anime-form>
